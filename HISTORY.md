@@ -1,3 +1,9 @@
+unreleased
+==========
+
+  * Use `content-type` and `media-typer` for type validation
+    - No behavior changes, upgrades `media-typer`
+
 1.6.17 / 2019-04-25
 ===================
 

@@ -12,8 +12,9 @@
  * @private
  */
 
-var typer = require('media-typer')
+var contentType = require('content-type')
 var mime = require('mime-types')
+var typer = require('media-typer')
 
 /**
  * Module exports.
@@ -236,13 +237,13 @@ function mimeMatch (expected, actual) {
 
 function normalizeType (value) {
   // parse the type
-  var type = typer.parse(value)
+  var type = contentType.parse(value).type
 
-  // remove the parameters
-  type.parameters = undefined
+  if (!typer.test(type)) {
+    return null
+  }
 
-  // reformat it
-  return typer.format(type)
+  return type
 }
 
 /**
